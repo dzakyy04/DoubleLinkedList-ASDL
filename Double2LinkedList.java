@@ -187,29 +187,41 @@ public class Double2LinkedList {
 		System.out.println("2. Tambah data tengah");
 		System.out.println("3. Tambah data akhir");
 		System.out.println("4. Cetak data");
+		System.out.println("5. Kembali");
 
 		boolean lanjut = true;
 		boolean ulang = true;
 		while (lanjut) {
 			System.out.print("Silahkan pilih [1/2/3] : ");
 			char pilih = sc.next().charAt(0);
-			int value;
 
 			switch (pilih) {
 			case '1':
-				addFirst(value = sc.nextInt());
+				System.out.print("Masukkan data yang ingin ditambah : ");
+				addFirst(sc.nextInt());
 				lanjut = false;
 				break;
 			case '2':
-				add(sc.nextInt(), sc.nextInt());
+				int pos;
+				int value;
+				System.out.print("Masukkan posisi yang ingin ditambah : ");
+				pos = sc.nextInt();
+				System.out.print("Masukkan data yang ingin ditambah : ");
+				value = sc.nextInt();
+				add(pos, value);
 				lanjut = false;
 				break;
 			case '3':
+				System.out.print("Masukkan data yang ingin ditambah : ");	
 				addLast(sc.nextInt());
 				lanjut = false;
 				break;
 			case '4':
 				printList(true);
+				lanjut = false;
+				break;
+			case '5' :
+				manual();
 				lanjut = false;
 				break;
 			default:
