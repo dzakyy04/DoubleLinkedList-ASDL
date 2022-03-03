@@ -5,6 +5,7 @@ public class Double2LinkedList {
 
 	Node head;
 	Node tail;
+	int length;
 
    class Node {
 		int data;
@@ -25,8 +26,8 @@ public class Double2LinkedList {
 	}
 
 	
-// 	Method menambah tambah data
-	public void addFirst(char data) {
+// 	Method menambah tambah data awal
+	public void addFirst(int data) {
 		Node newNode = new Node(data);
 		if (isEmpty()) {
 			tail = newNode;
@@ -38,6 +39,7 @@ public class Double2LinkedList {
 		length++;
 	}
 
+// 	Method menambah data tengah
 	public void add(int position, int data) {
 
 		Node node = new Node(data);
@@ -60,6 +62,20 @@ public class Double2LinkedList {
 		}
 
 	}
+	
+// 	Method menambah data akhir
+	public void addLast(int data) {
+		Node newNode = new Node(data);
+		if (isEmpty()) {
+			head = newNode;
+		} else {
+			tail.next = newNode;
+			newNode.prev = tail;
+		}
+		tail = newNode;
+		length++;
+	}
+	
 //Method Hitung Bilangan Node
     int countOfNode(Node head) {
 		int count = 0;
@@ -162,6 +178,47 @@ public class Double2LinkedList {
 			break;
 		}
 	}
+	
+//    Menu Tambah Data
+	public void menuTambahData() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("\n*** PILIHAN TAMBAH DATA ***");
+		System.out.println("1. Tambah data awal");
+		System.out.println("2. Tambah data tengah");
+		System.out.println("3. Tambah data akhir");
+		System.out.println("4. Cetak data");
+
+		boolean lanjut = true;
+		boolean ulang = true;
+		while (lanjut) {
+			System.out.print("Silahkan pilih [1/2/3] : ");
+			char pilih = sc.next().charAt(0);
+			int value;
+
+			switch (pilih) {
+			case '1':
+				addFirst(value = sc.nextInt());
+				lanjut = false;
+				break;
+			case '2':
+				add(sc.nextInt(), sc.nextInt());
+				lanjut = false;
+				break;
+			case '3':
+				addLast(sc.nextInt());
+				lanjut = false;
+				break;
+			case '4':
+				printList(true);
+				lanjut = false;
+				break;
+			default:
+				System.err.println("\nPilihan anda salah");
+				break;
+			}
+		}
+	}
+	
 //Menu Penghapus Data
     public void menuPenghapusanNode() {
 		Scanner input = new Scanner(System.in);
